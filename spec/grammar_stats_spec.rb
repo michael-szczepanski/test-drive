@@ -27,4 +27,25 @@ RSpec.describe GrammarStats do
       expect(stats.check("String")).to eq false
     end
   end
+
+  context "percentage of passed texts" do
+    it "returns 20% of passed texts for 1 pass out of 5 texts" do
+      stats = GrammarStats.new
+      stats.check("Banana!")
+      stats.check("apple?")
+      stats.check("pear!")
+      stats.check("Strawberry")
+      stats.check("POTATO")
+      result = stats.percentage_good
+      expect(result).to eq 20
+    end
+
+    it "returns 0% of passed texts for 0 pass out of 2 texts" do
+      stats = GrammarStats.new
+      stats.check("hello!!!!")
+      stats.check("Hiya")
+      result = stats.percentage_good
+      expect(result).to eq 0
+    end
+  end
 end
