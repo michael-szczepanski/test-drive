@@ -5,12 +5,12 @@ class DiaryEntry
   end
 
   def title
+    fail "Title needs to be a string" unless @title.is_a? String
     return @title
   end
 
   def contents
     # Returns the contents as a string
-    fail "Contents can't be empty" if @contents == ""
     fail "Contents needs to be a string" unless @contents.instance_of? String
 
     return @contents

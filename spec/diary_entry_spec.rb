@@ -18,4 +18,11 @@ RSpec.describe DiaryEntry do
       expect(result).to eq("Learning how to code")
     end
   end
+
+  context "non-string set as title" do
+    it "fails" do
+      diary = DiaryEntry.new(["array"], "Learning how to code")
+      expect { diary.title }.to raise_error "Title needs to be a string"
+    end
+  end
 end
