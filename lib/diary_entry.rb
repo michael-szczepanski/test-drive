@@ -37,5 +37,12 @@ class DiaryEntry
     # If called again, `reading_chunk` should return the next chunk, skipping
     # what has already been read, until the contents is fully read.
     # The next call after that it should restart from the beginning.
+    
+    fail "wpm and minutes need to be integers" unless wpm.is_a? Integer
+    fail "wpm and minutes need to be integers" unless minutes.is_a? Integer
+
+    words = @contents.split(" ")
+    chunk_size = wpm * minutes
+    return words.slice(0...chunk_size).join(" ")
   end
 end
