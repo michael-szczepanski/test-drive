@@ -12,7 +12,7 @@ RSpec.describe DiaryEntry do
       diary = DiaryEntry.new("My Life", 0)
       expect { diary.contents }.to raise_error "Contents needs to be a string"
     end
-    it "return contents of DiaryEntry" do
+    it "passes: return contents of DiaryEntry" do
       diary = DiaryEntry.new("My Life", "Learning how to code")
       result = diary.contents
       expect(result).to eq("Learning how to code")
