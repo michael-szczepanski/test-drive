@@ -1,10 +1,17 @@
 require 'diary_entry'
 
 RSpec.describe DiaryEntry do
-  it "checks that the title is returned" do
-    diary = DiaryEntry.new("My Life", "Learning how to code")
-    result = diary.title
-    expect(result).to eq "My Life"
+  context "title should be a valid string" do
+    it "checks that the title is returned" do
+      diary = DiaryEntry.new("My Life", "Learning how to code")
+      result = diary.title
+      expect(result).to eq "My Life"
+    end
+
+    it "fails" do
+      diary = DiaryEntry.new(["array"], "Learning how to code")
+      expect { diary.title }.to raise_error "Title needs to be a string"
+    end
   end
 
   context "non-string set as content" do
@@ -19,10 +26,11 @@ RSpec.describe DiaryEntry do
     end
   end
 
-  context "non-string set as title" do
-    it "fails" do
-      diary = DiaryEntry.new(["array"], "Learning how to code")
-      expect { diary.title }.to raise_error "Title needs to be a string"
+  context "count_words should return an integer" do
+    it "checks that the right number of words are returned" do
+      diary = DiaryEntry.new("My Life", "Learning how to code")
+      result = diary.count_words
+      expect(result).to eq 4
     end
   end
 end
