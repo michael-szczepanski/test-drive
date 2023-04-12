@@ -33,4 +33,17 @@ RSpec.describe DiaryEntry do
       expect(result).to eq 4
     end
   end
+
+  context "reading time should return an approximate integer" do
+    it "returns 4 for 1 wpm and contents of 'Learning how to code'" do
+      diary = DiaryEntry.new("My Life", "Learning how to code")
+      result = diary.reading_time(1)
+      expect(result).to eq 4
+    end
+
+    it "fails for non-integer" do
+      diary = DiaryEntry.new("title", "contents")
+      expect { diary.reading_time("one") }.to raise_error "wpm needs to be an integer"
+    end
+  end
 end

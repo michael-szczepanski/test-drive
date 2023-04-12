@@ -24,6 +24,8 @@ class DiaryEntry
                         # user can read per minute
     # Returns an integer representing an estimate of the reading time in minutes
     # for the contents at the given wpm.
+    fail "wpm needs to be an integer" unless wpm.is_a? Integer
+    return self.count_words / wpm
   end
 
   def reading_chunk(wpm, minutes) # `wpm` is an integer representing the number
