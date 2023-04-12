@@ -10,6 +10,10 @@ class DiaryEntry
 
   def contents
     # Returns the contents as a string
+    fail "Contents can't be empty" if @contents == ""
+    fail "Contents needs to be a string" unless @contents.instance_of? String
+
+    return @contents
   end
 
   def count_words
